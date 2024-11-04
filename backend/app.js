@@ -1,6 +1,6 @@
 const { app, sequelize, config } = require('./config/config');  // Đảm bảo đường dẫn là chính xác
-const userRoutes = require('./routes/userRoutes'); // P56c6
-const questionRoutes = require('./routes/questionRoutes'); // P9600
+const userRoutes = require('./routes/userRoutes'); 
+const questionRoutes = require('./routes/questionRoutes'); 
 const express = require('express');
 const path  = require('path');  
 
@@ -8,8 +8,9 @@ const cors = require('cors');
 
 app.use(cors());
 app.use('/resource/images', express.static(path.join(__dirname,"resource", 'images')));
-app.use('/api/users', userRoutes); // P4517
-app.use('/api/questions', questionRoutes); // P9600
+app.use('/api/users', userRoutes); 
+app.use('/api/questions', questionRoutes); 
+app.use('/api/questions/:questionId/answer', questionRoutes);
 
 // Đồng bộ với cơ sở dữ liệu và khởi động server
 sequelize.sync()
